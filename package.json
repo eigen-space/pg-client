@@ -41,7 +41,9 @@
         ]
     },
     "dependencies": {
-        "@eigenspace/logger": "1.0.7"
+        "@eigenspace/common-types": "0.0.25",
+        "@eigenspace/logger": "1.0.7",
+        "@eigenspace/utils": "1.2.48"
     },
     "peerDependencies": {
         "pg": "^8.5.1"

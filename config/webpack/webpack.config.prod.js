@@ -31,7 +31,9 @@ module.exports = {
     plugins: [
         new webpack.IgnorePlugin(/^pg-native$/),
         new CleanWebpackPlugin(),
-        new CopyWebpackPlugin([{ from: 'package.json', to: 'package.json' }]),
-        new CopyWebpackPlugin([{ from: 'README.md', to: 'README.md' }])
+        new CopyWebpackPlugin([
+            { from: 'package.json', to: 'package.json' },
+            { from: 'README.md', to: 'README.md' }
+        ])
     ]
 };

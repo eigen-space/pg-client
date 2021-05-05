@@ -1,5 +1,4 @@
-import { Logger } from '@eigenspace/logger';
-
-const logger = new Logger({ component: 'index' });
-
-logger.info('main', 'init');
+export * from './client';
+export * from './entities';
+export * from './enums';
+export * from './pool-provider';

@@ -18,7 +18,9 @@ You can find a configured secret for `NPM_REGISTRY_ACCESS_TOKEN` in
 
 # Why do we have that dependencies?
 
+* `@eigenspace/common-types` - contains base common types.
 * `@eigenspace/logger` - used for logging actions.
+* `@eigenspace/utils` - used as collection of string and object utils.
 
 # Why do we have that dev dependencies?
 

@@ -47,10 +47,30 @@
   dependencies:
     "@eigenspace/argument-parser" "1.0.4"
 
+"@eigenspace/common-types@0.0.25":
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/@eigenspace/common-types/-/common-types-0.0.25.tgz#5e8cf629e64ffe4e6f99457e86daca1f51ef5a60"
+  integrity sha512-lpDYH6JurG5KhgRVxUJ++WyEMLEa6fWjeanCxdYZWiGnSCKn9cmq2C+WrSK7vnimJ4Q8JqqUSSYHpdY1W68lsg==
+
+"@eigenspace/common-types@0.0.27":
+  version "0.0.27"
+  resolved "https://registry.yarnpkg.com/@eigenspace/common-types/-/common-types-0.0.27.tgz#0ee82aff7b4f5fb056aab1c0f63b3046949acdba"
+  integrity sha512-ydyes372EXAgqB9H2RMT46UxkIa9Hp7LOqjOoScmBX3ykNwnkVsBocsl4XOwhguCluwYgoKp0hWyOC+soEQtKw==
+
 "@eigenspace/logger@1.0.7":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@eigenspace/logger/-/logger-1.0.7.tgz#ac4270ca176c8ad42926a5f031142f8ec2618173"
   integrity sha512-J9pW658Ix7rzZVxj+izH4gxrgxSZuKGdzsq9Ak/7JJgFkdew79T1yqGpy/lqR6LbrGZ01wZwtxQoGPCZ7Cp2PA==
+
+"@eigenspace/utils@1.2.48":
+  version "1.2.48"
+  resolved "https://registry.yarnpkg.com/@eigenspace/utils/-/utils-1.2.48.tgz#515c606a8dec9ade0069002efd7f6aa3a8194d65"
+  integrity sha512-cRCruxEKzxcJo6U7z3rNWiS2MqfCWBV2gl5XdkvaYlyhhZrwnfkrE4ZlH3LtRMlykIpY4HUOTAuXJU/b9Vg15A==
+  dependencies:
+    "@eigenspace/common-types" "0.0.27"
+    lodash.camelcase "4.3.0"
+    lodash.kebabcase "4.1.1"
+    lodash.snakecase "4.1.1"
 
 "@eslint/eslintrc@^0.1.3":
   version "0.1.3"
@@ -2646,7 +2666,7 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
-lodash.camelcase@^4.1.1:
+lodash.camelcase@4.3.0, lodash.camelcase@^4.1.1:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha1-soqmKIorn8ZRA1x3EfZathkDMaY=
@@ -2661,12 +2681,12 @@ lodash.get@^4.4.2:
   resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
   integrity sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
 
-lodash.kebabcase@^4.0.1:
+lodash.kebabcase@4.1.1, lodash.kebabcase@^4.0.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.kebabcase/-/lodash.kebabcase-4.1.1.tgz#8489b1cb0d29ff88195cceca448ff6d6cc295c36"
   integrity sha1-hImxyw0p/4gZXM7KRI/21swpXDY=
 
-lodash.snakecase@^4.0.1:
+lodash.snakecase@4.1.1, lodash.snakecase@^4.0.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.snakecase/-/lodash.snakecase-4.1.1.tgz#39d714a35357147837aefd64b5dcbb16becd8f8d"
   integrity sha1-OdcUo1NXFHg3rv1ktdy7Fr7Nj40=
