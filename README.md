@@ -2,6 +2,26 @@
 
 It's a simple implementation of [a base repository pattern](https://martinfowler.com/eaaCatalog/repository.html#:~:text=Repository%20also%20supports%20the%20objective,pattern%20in%20Domain%20Driven%20Design%20.)
 that provides simple database operations with entity.
+
+# How to
+
+1. Create database pool
+  ```typescript
+  PoolProvider.create(config);
+  ```
+2. Create particular repository
+  ```typescript
+  class EntityService extends BaseDbService<Entity> {
+      constructor() {
+          super({ table: 'entities', uniqueSelector: ['name'] });
+      }
+  }
+  ```
+3. Use created service
+  ```typescript
+    this.entityService = new EntityService();
+    await this.entityService.getAll();
+  ```
   
 # Publishing the package
 
