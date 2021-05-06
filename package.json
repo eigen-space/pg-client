@@ -1,7 +1,7 @@
 {
     "name": "@eigenspace/pg-client",
     "description": "A db client for common operations",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "index.js",
     "author": "Nikita Agupov <nktrsk@gmail.com>",
     "contributors": [
