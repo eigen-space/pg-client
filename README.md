@@ -3,21 +3,26 @@
 It's a simple implementation of [a base repository pattern](https://martinfowler.com/eaaCatalog/repository.html#:~:text=Repository%20also%20supports%20the%20objective,pattern%20in%20Domain%20Driven%20Design%20.)
 that provides simple database operations with entity.
 
-# How to
+# How to use
 
-1. Create database pool
-  ```typescript
-  PoolProvider.create(config);
-  ```
-2. Create particular repository
+1. Create particular repository
+
+  PoolProvider - is a service that helps share one instance of a pool between
+  repositories and centrally destroy connections if it is needed. 
+   
   ```typescript
   class EntityService extends BaseDbService<Entity> {
-      constructor() {
-          super({ table: 'entities', uniqueSelector: ['name'] });
+      
+        constructor() {
+            super(
+                PoolProvider.getInstance(config),
+                { table: 'entities', uniqueSelector: ['name'] },
+                'EntityService'
+            );
       }
   }
   ```
-3. Use created service
+2. Use created service
   ```typescript
     this.entityService = new EntityService();
     await this.entityService.getAll();
