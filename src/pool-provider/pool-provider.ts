@@ -10,21 +10,12 @@ export class PoolProvider {
     private static logger = new Logger({ component: 'PoolProvider' });
 
     /**
-     * Method create pool and have to be called primarily
-     *
-     * @param config
-     */
-    static create(config: PoolConfig): void {
-        this.pool = new Pool(config);
-    }
-
-    /**
      * Method gets pool of connections for specified database.
      * If there is no existing connection pool, it throws an error.
      */
-    static get(): Pool {
+    static getInstance(config: PoolConfig): Pool {
         if (!PoolProvider.pool) {
-            throw new Error('Create connection before using it');
+            PoolProvider.pool = new Pool(config);
         }
 
         return PoolProvider.pool;

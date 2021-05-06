@@ -4,12 +4,12 @@ import { AnyDictionary, Guid } from '@eigenspace/common-types';
 import { ObjectUtils, StringUtils } from '@eigenspace/utils';
 import { Entity } from '../entities';
 import { SaveMode } from '../enums';
-import { PoolProvider } from '../pool-provider';
+import { Pool } from 'pg';
 
 export class BaseDbService<T extends Entity> {
     protected logger: Logger;
 
-    constructor(private config: DbServiceConfig, componentName: string) {
+    constructor(private pool: Pool, private config: DbServiceConfig, componentName: string) {
         const component = `${componentName}|db table: ${this.config.table}`;
         this.logger = new Logger({ component });
     }
@@ -96,8 +96,7 @@ export class BaseDbService<T extends Entity> {
 
     // noinspection JSMethodCanBeStatic
     protected async query<R>(query: string, params: QueryParam[] = []): Promise<R[]> {
-        const pool = PoolProvider.get();
-        const result = await pool.query(query, params);
+        const result = await this.pool.query(query, params);
         return this.convertEntitiesFromDbToApp<R>(result.rows);
     }
 
