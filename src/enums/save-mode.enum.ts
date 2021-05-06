@@ -1,0 +1,4 @@
+export enum SaveMode {
+    INSERT = 'INSERT_NEW_ONE',
+    UPDATE_LAST_ENTITY = 'UPDATE_LAST_ENTITY'
+}
