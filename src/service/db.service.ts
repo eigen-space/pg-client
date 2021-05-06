@@ -58,7 +58,7 @@ export class BaseDbService<T extends Entity> {
         `);
     }
 
-    find(entity: T): Promise<T | undefined> {
+    findOne(entity: T): Promise<T | undefined> {
         this.logger.info('find', 'find:', JSON.stringify(entity));
 
         if (!entity.id && !this.config.uniqueSelector) {
@@ -123,7 +123,7 @@ export class BaseDbService<T extends Entity> {
     }
 
     private async patchOne(entity: T, entriesToSave: DbEntry[]): Promise<T> {
-        const itemInDb = await this.find(entity);
+        const itemInDb = await this.findOne(entity);
 
         if (!itemInDb) {
             return this.insertOne(entriesToSave);
