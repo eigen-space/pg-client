@@ -1,4 +1,4 @@
-import { DbClientConfig } from './db-client-config';
+import { DbServiceConfig } from './db.service.config';
 import { Logger } from '@eigenspace/logger';
 import { AnyDictionary, Guid } from '@eigenspace/common-types';
 import { ObjectUtils, StringUtils } from '@eigenspace/utils';
@@ -6,10 +6,10 @@ import { Entity } from '../entities';
 import { SaveMode } from '../enums';
 import { PoolProvider } from '../pool-provider';
 
-export class BaseDbClient<T extends Entity> {
+export class BaseDbService<T extends Entity> {
     protected logger: Logger;
 
-    constructor(private config: DbClientConfig, componentName: string) {
+    constructor(private config: DbServiceConfig, componentName: string) {
         const component = `${componentName}|db table: ${this.config.table}`;
         this.logger = new Logger({ component });
     }
