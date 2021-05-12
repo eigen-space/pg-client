@@ -14,6 +14,7 @@ export class PoolProvider {
      * If there is no existing connection pool, it throws an error.
      */
     static getInstance(config: PoolConfig): Pool {
+        PoolProvider.logger.info('getInstance', JSON.stringify(config, null, 4));
         if (!PoolProvider.pool) {
             PoolProvider.pool = new Pool(config);
         }
