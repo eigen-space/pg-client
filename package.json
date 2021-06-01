@@ -41,7 +41,7 @@
         ]
     },
     "dependencies": {
-        "@eigenspace/common-types": "0.0.25",
+        "@eigenspace/common-types": "0.0.27",
         "@eigenspace/logger": "1.0.7",
         "@eigenspace/utils": "1.2.48"
     },
