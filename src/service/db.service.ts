@@ -1,6 +1,6 @@
 import { DbServiceConfig } from './db.service.config';
 import { Logger } from '@eigenspace/logger';
-import { AnyDictionary, Guid } from '@eigenspace/common-types';
+import { AnyDictionary, Guid, IsoDateTimeString } from '@eigenspace/common-types';
 import { ObjectUtils, StringUtils } from '@eigenspace/utils';
 import { Entity } from '../entities';
 import { SaveMode } from '../enums';
@@ -20,6 +20,16 @@ export class BaseDbService<T extends Entity> {
             select *
             from ${this.getTableNameWithScheme()}
         `);
+    }
+
+    // noinspection JSUnusedGlobalSymbols
+    getAllUpdatedAfter(timestamp: IsoDateTimeString): Promise<T[]> {
+        // noinspection SqlResolve
+        return this.query<T>(`
+            select *
+            from ${this.getTableNameWithScheme()}
+            where "modified_at" >= $1
+        `, [timestamp]);
     }
 
     // noinspection JSUnusedGlobalSymbols
@@ -106,7 +116,7 @@ export class BaseDbService<T extends Entity> {
         return result[0];
     }
 
-    private insertOne(entriesToSave: DbEntry[]): Promise<T> {
+    protected insertOne(entriesToSave: DbEntry[]): Promise<T> {
         const { fields, values, placeholders } = this.getQueryParamSet(entriesToSave);
         const stringifiedFields = fields.join(', ');
         this.logger.info('insertOne', `insert [${stringifiedFields}] with values [${values.join(', ')}]`);
@@ -121,7 +131,7 @@ export class BaseDbService<T extends Entity> {
         );
     }
 
-    private async patchOne(entity: T, entriesToSave: DbEntry[]): Promise<T> {
+    protected async patchOne(entity: T, entriesToSave: DbEntry[]): Promise<T> {
         const itemInDb = await this.findOne(entity);
 
         if (!itemInDb) {
@@ -144,7 +154,7 @@ export class BaseDbService<T extends Entity> {
         );
     }
 
-    private findById(id: Guid): Promise<T> {
+    protected findById(id: Guid): Promise<T> {
         // noinspection SqlResolve
         return this.querySingle<T>(
             `
@@ -159,7 +169,7 @@ export class BaseDbService<T extends Entity> {
      * Returns full name to address table,
      * i.e. scheme name + table (entity) name.
      */
-    private getTableNameWithScheme(): string {
+    protected getTableNameWithScheme(): string {
         return `public."${this.config.table}"`;
     }
 
@@ -181,7 +191,7 @@ export class BaseDbService<T extends Entity> {
      *          - values: ['guid', 'guid', 1718.5]
      *          - placeholders: ['$1', '$2', '$3']
      */
-    private getQueryParamSet(entries: DbEntry[]): QueryParamSet {
+    protected getQueryParamSet(entries: DbEntry[]): QueryParamSet {
         const fields = entries.map(([key]) => `"${StringUtils.toSnakeCase(key)}"`);
         const values = entries.map(([, value]) => value);
         const placeholders = entries.map(({}, index) => `$${index + 1}`);
@@ -190,7 +200,7 @@ export class BaseDbService<T extends Entity> {
     }
 
     // noinspection JSMethodCanBeStatic
-    private convertEntitiesFromDbToApp<R>(dbEntities: AnyDictionary[]): R[] {
+    protected convertEntitiesFromDbToApp<R>(dbEntities: AnyDictionary[]): R[] {
         return ObjectUtils.convertObjectKeys(dbEntities, StringUtils.toCamelCase);
     }
 }

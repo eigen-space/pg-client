@@ -47,11 +47,6 @@
   dependencies:
     "@eigenspace/argument-parser" "1.0.4"
 
-"@eigenspace/common-types@0.0.25":
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/@eigenspace/common-types/-/common-types-0.0.25.tgz#5e8cf629e64ffe4e6f99457e86daca1f51ef5a60"
-  integrity sha512-lpDYH6JurG5KhgRVxUJ++WyEMLEa6fWjeanCxdYZWiGnSCKn9cmq2C+WrSK7vnimJ4Q8JqqUSSYHpdY1W68lsg==
-
 "@eigenspace/common-types@0.0.27":
   version "0.0.27"
   resolved "https://registry.yarnpkg.com/@eigenspace/common-types/-/common-types-0.0.27.tgz#0ee82aff7b4f5fb056aab1c0f63b3046949acdba"
